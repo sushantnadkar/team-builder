@@ -24,7 +24,7 @@ function Settings() {
       <h1>Settings</h1>
         <p>Mode: {mode}</p>
         <label className="switch">
-            <input type="checkbox" onClick={() => toggleMode(mode === "live" ? "demo" : "live")}/>
+            <input type="checkbox" onClick={() => toggleMode(mode === "live" ? "demo" : "live")} checked={mode === "live" ? true : false}/>
             <span className="slider round"></span>
         </label>
     </div>

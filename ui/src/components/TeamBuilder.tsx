@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../App.css';
 import { Apis } from '../services/apis';
@@ -7,7 +7,7 @@ import { Apis } from '../services/apis';
 export default function TeamBuilder() {
 
     const [participant, setParticipant] = useState<string>('');
-    const [code, setCode] = useState<string>('');
+    const [code, setCode] = useState<number>(-1);
 
     const api = new Apis();
 
@@ -30,7 +30,7 @@ export default function TeamBuilder() {
             <h1>Team Builder</h1>
             <input type="text" name="" id="participant" onChange={(e) => participantValueChange(e)} value={participant}/>
             <button onClick={() => getCode()}>Get Code</button>
-            <p>Code: {code != "-1" ? code : "Participant not found!" }</p>
+            <p>Code: {code !== -1 ? code : "Participant not found!" }</p>
         </div>
     )
 }

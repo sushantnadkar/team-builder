@@ -44,5 +44,8 @@ module.exports = {
   target: 'node',
   plugins: [
     new webpack.DefinePlugin(ENVIRONMENT_VARIABLES),
-  ]
+  ],
+  devServer: {
+    allowedHosts: "all"
+  }
 };

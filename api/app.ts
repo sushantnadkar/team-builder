@@ -1,6 +1,7 @@
 import * as bodyParser from "body-parser";
 const path = require('path');
 import * as express from "express";
+import swaggerUi = require('swagger-ui-express');
 import fs = require('fs');
 import { TaskService } from "./service/task.service";
 
@@ -35,23 +36,6 @@ class App {
 
     private routes(): void {
 
-        // this.express.get('/api/tasks', (req, res) => {
-        //     this.taskController.getTasks().then(data => res.json(data));
-        // });
-        
-        // this.express.post('/api/task', (req, res) => {
-        //     console.log(req.body);
-        //     this.taskController.createTask(req.body.task).then(data => res.json(data));
-        // });
-        
-        // this.express.put('/api/task', (req, res) => {
-        //     this.taskController.updateTask(req.body.task).then(data => res.json(data));
-        // });
-        
-        // this.express.delete('/api/task/:id', (req, res) => {
-        //     this.taskController.deleteTask(req.params.id).then(data => res.json(data));
-        // });
-
         this.express.post("/api/get-card-number", async (req, res) => {
             console.log(req.body);
             if(this.mode === "demo")
@@ -77,7 +61,7 @@ class App {
         });
 
         // swagger docs
-        //this.express.use('/api/docs', swaggerUi.serve, swaggerUi.setup(this.swaggerDocument, null, null, this.customCss));
+        this.express.use('/api/docs', swaggerUi.serve, swaggerUi.setup(this.swaggerDocument, null, null, this.customCss));
 
         // handle undefined routes
         this.express.use("*", (req, res, next) => {

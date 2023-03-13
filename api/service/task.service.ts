@@ -17,12 +17,15 @@ export class TaskService {
     constructor() {}
 
     async getCardNumber(name: String) {
-        if (!Object.keys(this.cardNumbers).includes(name.toLowerCase().trim())) return console.log("Participant not found!")
+        if (!Object.keys(this.cardNumbers).includes(name.toLowerCase().trim())) {
+            console.log("Participant not found!")
+            return -1;
+        }
         console.log(name.toLowerCase().trim(), this.cardNumbers[name.toLowerCase()]);
         return parseInt(this.cardNumbers[name.toLowerCase()]);
     }
     async getRandomCardNumber(name: String) {
-        if (name === "") {
+        if (name === "" || !Object.keys(this.cardNumbers).includes(name.toLowerCase().trim())) {
             console.log("Participant not found!")
             return -1;
         }
